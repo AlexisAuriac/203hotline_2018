@@ -17,6 +17,7 @@ end
 
 module BinDistrib
     def BinDistrib.testBinDistrib(d)
+        start = Time.now
         puts "Binomial distribution:"
 
         probs = getBinProbs(d)
@@ -24,6 +25,6 @@ module BinDistrib
 
         printf("overload:  %.1f%%\n", 0)
 
-        printf("computation time:  %.2f ms\n", 0)
+        printf("computation time:  %.2f ms\n", (Time.now - start) * 1000.0)
     end
 end

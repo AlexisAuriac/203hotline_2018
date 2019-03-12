@@ -17,12 +17,13 @@ end
 
 module PoissonDistrib
     def PoissonDistrib.testPoissonDistrib(d)
+        start = Time.now
         puts "Poisson distribution:"
 
         probs = getPoissonProbs(d)
         Distributions.printProbs(probs)
 
         printf("overload:  %.1f%%\n", 0)
-        printf("computation time:  %.2f ms\n", 0)
+        printf("computation time:  %.2f ms\n", (Time.now - start) * 1000.0)
     end
 end
