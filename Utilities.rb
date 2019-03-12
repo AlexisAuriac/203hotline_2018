@@ -1,5 +1,8 @@
 module Utilities
     def Utilities.factorial(n)
+        if n == 0
+            return 1
+        end
         return n.downto(1).inject(:*)
     end
 
