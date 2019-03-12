@@ -3,7 +3,7 @@
 require "./Utilities.rb"
 require "./Parameters.rb"
 
-MAX_NB_CALLS = 3500
+MAX_CALLS = 3500
 HOURS_PER_DAY = 8.0
 SEC_PER_HOUR = 3600.0
 
@@ -19,10 +19,11 @@ end
 
 if d != 0
     p = d / SEC_PER_HOUR / HOURS_PER_DAY
+
     puts "Binomial distribution:"
     values = []
     for i in 0..50
-        value = binomialDistribution(MAX_NB_CALLS, i, p)
+        value = binomialDistribution(MAX_CALLS, i, p)
         values << value
         printf("#{i} -> %.3f", value)
         if (i + 1) % 6 != 0 and i != 50
@@ -34,22 +35,23 @@ if d != 0
     printf("overload: %.1f%%\n", 0)
     printf("computation time: %.2f ms\n", 0)
 
-    # puts
+    puts
 
-    # puts "Poisson distribution:"
-    # values = []
-    # for i in 0..50
-    #     value = poissonDistribution(d, i)
-    #     values << value
-    #     printf("#{i} -> %.3f", value)
-    #     if (i + 1) % 6 != 0 and i != 50
-    #         print "\t"
-    #     else
-    #         puts
-    #     end
-    # end
-    # printf("overload: %.1f%%\n", 0)
-    # printf("computation time: %.2f ms\n", 0)
+    l = d * MAX_CALLS / SEC_PER_HOUR / HOURS_PER_DAY
+    puts "Poisson distribution:"
+    values = []
+    for i in 0..50
+        value = poissonDistribution(l, i)
+        values << value
+        printf("#{i} -> %.3f", value)
+        if (i + 1) % 6 != 0 and i != 50
+            print "\t"
+        else
+            puts
+        end
+    end
+    printf("overload: %.1f%%\n", 0)
+    printf("computation time: %.2f ms\n", 0)
 else
     puts("#{k}-combination of a #{n} set:")
     puts(Utilities.combinations(n, k))
