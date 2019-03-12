@@ -2,56 +2,15 @@
 
 require "./Utilities.rb"
 require "./Parameters.rb"
-
-MAX_CALLS = 3500
-HOURS_PER_DAY = 8.0
-SEC_PER_HOUR = 3600.0
+require "./BinDistrib.rb"
+require "./PoissonDistrib.rb"
 
 n, k, d = Parameters.parseParameters(ARGV)
 
-def poissonDistribution(lambda, k)
-    return (Math.exp(-lambda) * lambda ** k) / Utilities.factorial(k)
-end
-
-def binomialDistribution(n, k, p)
-    return Utilities.combinations(n, k) * p**k * (1.0 - p)**(n - k)
-end
-
 if d != 0
-    p = d / SEC_PER_HOUR / HOURS_PER_DAY
-
-    puts "Binomial distribution:"
-    values = []
-    for i in 0..50
-        value = binomialDistribution(MAX_CALLS, i, p)
-        values << value
-        printf("#{i} -> %.3f", value)
-        if (i + 1) % 6 != 0 and i != 50
-            print "\t"
-        else
-            puts
-        end
-    end
-    printf("overload: %.1f%%\n", 0)
-    printf("computation time: %.2f ms\n", 0)
-
+    BinDistrib.testBinDistrib(d)
     puts
-
-    l = d * MAX_CALLS / SEC_PER_HOUR / HOURS_PER_DAY
-    puts "Poisson distribution:"
-    values = []
-    for i in 0..50
-        value = poissonDistribution(l, i)
-        values << value
-        printf("#{i} -> %.3f", value)
-        if (i + 1) % 6 != 0 and i != 50
-            print "\t"
-        else
-            puts
-        end
-    end
-    printf("overload: %.1f%%\n", 0)
-    printf("computation time: %.2f ms\n", 0)
+    PoissonDistrib.testPoissonDistrib(d)
 else
     puts("#{k}-combination of a #{n} set:")
     puts(Utilities.combinations(n, k))
