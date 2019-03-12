@@ -1,3 +1,6 @@
+# test files
+*.txt
+
 # sublime
 *.sublime-project
 *.sublime-workspace
