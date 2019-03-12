@@ -1,12 +1,14 @@
 #!/bin/ruby
 
+require "./Utilities.rb"
 require "./Parameters.rb"
 
 n, k, d = Parameters.parseParameters(ARGV)
 
-# if d != 0
-#     printf("d: %d\n", d)
-# else
-#     printf("n, k: %d, %d\n", n, k)
-# end
+if d != 0
+    printf("d: %d\n", d)
+else
+    puts("#{k}-combination of a #{n} set:")
+    puts(Utilities.combinations(n, k))
+end
 exit(0)
