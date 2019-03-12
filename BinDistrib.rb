@@ -22,8 +22,8 @@ module BinDistrib
         probs = getBinProbs(d)
         Distributions.printProbs(probs)
 
-        printf("overload: %.1f%%\n", 0)
+        printf("overload:  %.1f%%\n", 0)
 
-        printf("computation time: %.2f ms\n", 0)
+        printf("computation time:  %.2f ms\n", 0)
     end
 end
