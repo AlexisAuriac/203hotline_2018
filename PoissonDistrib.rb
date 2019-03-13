@@ -23,7 +23,7 @@ module PoissonDistrib
         probs = getPoissonProbs(d)
         Distributions.printProbs(probs)
 
-        printf("overload:  %.1f%%\n", 0)
+        printf("overload:  %.1f%%\n", Distributions.getOverload(probs))
         printf("computation time:  %.2f ms\n", (Time.now - start) * 1000.0)
     end
 end

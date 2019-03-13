@@ -15,4 +15,8 @@ module Distributions
             end
         end
     end
+
+    def Distributions.getOverload(probs)
+        return probs.slice(26, 25).inject(:+) * 100.0
+    end
 end
