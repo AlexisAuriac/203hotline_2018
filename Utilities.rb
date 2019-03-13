@@ -6,7 +6,17 @@ module Utilities
         return n.downto(1).inject(:*)
     end
 
-    def Utilities.combinations(n, k)
-        return factorial(n) / (factorial(k) * factorial(n - k))
+    def Utilities.binCoef(n, k)
+        if (k > n - k)
+            k = n - k
+        end
+
+        res = 1
+
+        for i in 0..(k - 1)
+            res *= n - i
+            res /= i + 1
+        end
+        return res
     end
 end

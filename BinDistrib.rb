@@ -1,7 +1,7 @@
 require "./Distributions.rb"
 
 def binomialDistribution(n, k, p)
-    return Utilities.combinations(n, k) * p**k * (1.0 - p)**(n - k)
+    return Utilities.binCoef(n, k) * p**k * (1.0 - p)**(n - k)
 end
 
 def getBinProbs(d)

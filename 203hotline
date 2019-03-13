@@ -13,6 +13,6 @@ if d != 0
     PoissonDistrib.testPoissonDistrib(d)
 else
     puts("#{k}-combination of a #{n} set:")
-    puts(Utilities.combinations(n, k))
+    puts(Utilities.binCoef(n, k))
 end
 exit(0)
