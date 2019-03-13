@@ -16,12 +16,24 @@ def getCallDuration(arg)
     return arg.to_i
 end
 
-def getValue(arg)
-    if not /^[1-9]\d*$/ =~ arg
-        STDERR.print(arg, ": Invalid value\n")
+def getNK(argv)
+    if not /^[1-9]\d*$/ =~ argv[0]
+        STDERR.print(argv[0], ": Invalid value\n")
+        exit(84)
+    elsif not /^[1-9]\d*$/ =~ argv[1]
+        STDERR.print(argv[1], ": Invalid value\n")
         exit(84)
     end
-    return arg.to_i
+
+    n = argv[0].to_i
+    k = argv[1].to_i
+
+    if k > n
+        STDERR.puts("k superior to n")
+        exit(84)
+    end
+
+    return n, k
 end
 
 module Parameters
@@ -36,7 +48,8 @@ module Parameters
                 return 0, 0, getCallDuration(argv[0])
             end
         else
-            return getValue(argv[0]), getValue(argv[1]), 0
+            n, k = getNK(argv)
+            return n, k, 0
         end
     end
 end
