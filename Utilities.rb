@@ -3,7 +3,7 @@ module Utilities
         if n == 0
             return 1
         end
-        return n.downto(1).inject(:*)
+        return n * factorial(n - 1)
     end
 
     def Utilities.binCoef(n, k)
