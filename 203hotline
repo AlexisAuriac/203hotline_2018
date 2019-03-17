@@ -5,14 +5,18 @@ require "./Parameters.rb"
 require "./BinDistrib.rb"
 require "./PoissonDistrib.rb"
 
-n, k, d = Parameters.parseParameters(ARGV)
+def main
+    n, k, d = Parameters.parseParameters(ARGV)
 
-if d != 0
-    BinDistrib.testBinDistrib(d)
-    puts
-    PoissonDistrib.testPoissonDistrib(d)
-else
-    puts("#{k}-combination of a #{n} set:")
-    puts(Utilities.binCoef(n, k))
+    if d != 0
+        BinDistrib.testBinDistrib(d)
+        puts
+        PoissonDistrib.testPoissonDistrib(d)
+    else
+        puts("#{k}-combination of a #{n} set:")
+        puts(Utilities.binCoef(n, k))
+    end
+    exit(0)
 end
-exit(0)
+
+main()
