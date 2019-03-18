@@ -6,6 +6,7 @@ readonly TEST_DIR='./tests'
 readonly TESTS=(
     $TEST_DIR/tests_params.rb
     $TEST_DIR/tests_utilities.rb
+    $TEST_DIR/tests_examples.rb
 )
 
 readonly INTERPRET='ruby'

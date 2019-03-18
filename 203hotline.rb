@@ -5,8 +5,8 @@ require "./Parameters.rb"
 require "./BinDistrib.rb"
 require "./PoissonDistrib.rb"
 
-def main
-    n, k, d = Parameters.parseParameters(ARGV)
+def main(argv)
+    n, k, d = Parameters.parseParameters(argv)
 
     if d != 0
         BinDistrib.testBinDistrib(d)
@@ -19,4 +19,6 @@ def main
     exit(0)
 end
 
-main()
+if __FILE__ == $0
+    main(ARGV)
+end

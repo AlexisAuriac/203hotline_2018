@@ -1,9 +1,6 @@
 require "minitest/autorun"
 require_relative "../Utilities.rb"
 
-EXIT_FAILURE = 84
-EXIT_SUCCESS = 0
-
 class TestUtilities < Minitest::Test
     def test_factorial
         assert_equal(1, Utilities.factorial(0))
