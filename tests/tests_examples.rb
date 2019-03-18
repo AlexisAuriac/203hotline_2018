@@ -33,6 +33,16 @@ class TestSubjectExample < Minitest::Test
         end
         $stdout = STDOUT
         expected = File.read(RES2)
-        assert_equal(expected, output.string)
+
+        output = output.string.split("\n")
+        expected = expected.split("\n")
+
+        assert_equal(expected.length, output.length)
+        for i in 0..expected.length
+            if /^computation/ =~ expected[i]
+                next
+            end
+            assert_equal(expected[i], output[i], "diff at line #{i}")
+        end
     end
 end
