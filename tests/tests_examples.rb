@@ -7,6 +7,8 @@ EXIT_SUCCESS = 0
 RES1 = "./tests/res_ex1.txt"
 RES2 = "./tests/res_ex2.txt"
 
+R_COMPUTATION_TIME = /^computation time:  \d+\.\d{2} ms$/
+
 class TestSubjectExample < Minitest::Test
     def test_binCoef
         output = StringIO.new()
@@ -37,12 +39,13 @@ class TestSubjectExample < Minitest::Test
         output = output.string.split("\n")
         expected = expected.split("\n")
 
-        assert_equal(expected.length, output.length)
+        assert_equal(expected.length, output.length, "different lengths")
         for i in 0..expected.length
             if /^computation/ =~ expected[i]
-                next
+                assert_match(R_COMPUTATION_TIME, output[i], "diff at line #{i}")
+            else
+                assert_equal(expected[i], output[i], "diff at line #{i}")
             end
-            assert_equal(expected[i], output[i], "diff at line #{i}")
         end
     end
 end
